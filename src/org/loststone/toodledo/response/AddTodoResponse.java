@@ -2,18 +2,20 @@ package org.loststone.toodledo.response;
 
 import org.loststone.toodledo.ToodledoApiException;
 
-public class AuthorizeResponse extends Response {
-	
-	public AuthorizeResponse(String response) {
-		super(response);
-	}
 
+public class AddTodoResponse extends Response {
+
+	public AddTodoResponse(String resp) {
+		super(resp);
+	}
+	
 	@Override
 	public int getResponseResult() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
-
-	@Override
+	
+	// TODO refactor to the parent class.
 	public String getResponseContent() throws ToodledoApiException {
 		String result = null;		
 		// check for errors:
@@ -23,8 +25,9 @@ public class AuthorizeResponse extends Response {
 					response.indexOf("</error>")));
 		}
 		
-		result = response.substring(response.indexOf("<token>")+7, response.indexOf("</token>"));
+		result = response.substring(response.indexOf("<added>")+7, response.indexOf("</added>"));
 		this.succeed = true;
 		return result; 
 	}
+
 }

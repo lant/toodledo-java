@@ -34,7 +34,40 @@ public class Todo {
 	int id; 
 	int start; 
 	int end;
+	private boolean hasEnd;
+	private boolean hasStart;
+	private boolean hasId;
+	private boolean hasStar;
+	private boolean hasComp;
+	private boolean hasCompafter;
+	private boolean hasCompbefore;
+	private boolean hasModbefore;
+	private boolean hasModafter;
+	private boolean hasStartafter;
+	private boolean hasStartbefore;
+	private boolean hasAfter;
+	private boolean hasBefore;
+	private boolean hasLonger;
+	private boolean hasShorter;
+	private boolean hasParent;
+	private boolean hasStatus;
+	private boolean hasRepeat;
+	private boolean hasPriority;
+	private boolean hasGoal;
+	private boolean hasContext;
+	private boolean hasFolder;
+	private boolean hasTag;
+	private boolean hasTitle;
 	
+	public Todo() {}
+	
+	/**
+	 * Creates a todo from the xml representation.
+	 * @param xml
+	 */
+	public Todo(String xml) {
+		
+	}
 	
 	/**
 	 * @return the title
@@ -47,7 +80,10 @@ public class Todo {
 	 * @param title the title to set
 	 */
 	public void setTitle(String title) {
+		// TODO up to 255 chars
+
 		this.title = title;
+		this.hasTitle = true;
 	}
 	
 	/**
@@ -62,6 +98,7 @@ public class Todo {
 	 */
 	public void setTag(String tag) {
 		this.tag = tag;
+		this.hasTag = true;
 	}
 	
 	/**
@@ -76,6 +113,7 @@ public class Todo {
 	 */
 	public void setFolder(int folder) {
 		this.folder = folder;
+		this.hasFolder = true;
 	}
 	
 	/**
@@ -90,6 +128,7 @@ public class Todo {
 	 */
 	public void setContext(int context) {
 		this.context = context;
+		this.hasContext = true;
 	}
 	
 	/**
@@ -104,6 +143,7 @@ public class Todo {
 	 */
 	public void setGoal(int goal) {
 		this.goal = goal;
+		this.hasGoal = true;
 	}
 	
 	/**
@@ -118,6 +158,7 @@ public class Todo {
 	 */
 	public void setPriority(Priority priority) {
 		this.priority = priority;
+		this.hasPriority = true;
 	}
 	
 	/**
@@ -132,6 +173,7 @@ public class Todo {
 	 */
 	public void setRepeat(Repeat repeat) {
 		this.repeat = repeat;
+		this.hasRepeat = true; 
 	}
 	
 	/**
@@ -146,6 +188,7 @@ public class Todo {
 	 */
 	public void setStatus(Status status) {
 		this.status = status;
+		this.hasStatus = true;
 	}
 	
 	/**
@@ -160,6 +203,7 @@ public class Todo {
 	 */
 	public void setParent(int parent) {
 		this.parent = parent;
+		this.hasParent = true;
 	}
 	
 	/**
@@ -174,6 +218,7 @@ public class Todo {
 	 */
 	public void setShorter(int shorter) {
 		this.shorter = shorter;
+		this.hasShorter = true; 
 	}
 
 	/**
@@ -188,6 +233,7 @@ public class Todo {
 	 */
 	public void setLonger(int longer) {
 		this.longer = longer;
+		this.hasLonger = true;
 	}
 	
 	/**
@@ -202,6 +248,7 @@ public class Todo {
 	 */
 	public void setBefore(TdDate before) {
 		this.before = before;
+		this.hasBefore = true;
 	}
 	
 	/**
@@ -216,6 +263,7 @@ public class Todo {
 	 */
 	public void setAfter(TdDate after) {
 		this.after = after;
+		this.hasAfter = true;
 	}
 	
 	/**
@@ -230,6 +278,7 @@ public class Todo {
 	 */
 	public void setStartbefore(TdDate startbefore) {
 		this.startbefore = startbefore;
+		this.hasStartbefore = true;
 	}
 	
 	/**
@@ -245,6 +294,7 @@ public class Todo {
 	 */
 	public void setStartafter(TdDate startafter) {
 		this.startafter = startafter;
+		this.hasStartafter = true;
 	}
 	
 	/**
@@ -259,6 +309,7 @@ public class Todo {
 	 */
 	public void setModbefore(TdDateTime modbefore) {
 		this.modbefore = modbefore;
+		this.hasModbefore = true;
 	}
 	
 	/**
@@ -273,6 +324,7 @@ public class Todo {
 	 */
 	public void setModafter(TdDateTime modafter) {
 		this.modafter = modafter;
+		this.hasModafter = true;
 	}
 	
 	/**
@@ -287,6 +339,7 @@ public class Todo {
 	 */
 	public void setCompbefore(TdDate compbefore) {
 		this.compbefore = compbefore;
+		this.hasCompbefore = true;
 	}
 	
 	/**
@@ -301,6 +354,7 @@ public class Todo {
 	 */
 	public void setCompafter(TdDate compafter) {
 		this.compafter = compafter;
+		this.hasCompafter = true;
 	}
 	
 	/**
@@ -315,6 +369,7 @@ public class Todo {
 	 */
 	public void setNotcomp(boolean notcomp) {
 		this.notcomp = notcomp;
+		this.hasComp = true;
 	}
 
 	/**
@@ -329,6 +384,7 @@ public class Todo {
 	 */
 	public void setStar(boolean star) {
 		this.star = star;
+		this.hasStar = true;
 	}
 	
 	/**
@@ -343,6 +399,7 @@ public class Todo {
 	 */
 	public void setId(int id) {
 		this.id = id;
+		this.hasId = true;
 	}
 	
 	/**
@@ -357,6 +414,7 @@ public class Todo {
 	 */
 	public void setStart(int start) {
 		this.start = start;
+		this.hasStart = true;
 	}
 	
 	/**
@@ -371,6 +429,175 @@ public class Todo {
 	 */
 	public void setEnd(int end) {
 		this.end = end;
+		this.hasEnd = true;
+	}
+
+	/**
+	 * @return the hasEnd
+	 */
+	public boolean hasEnd() {
+		return hasEnd;
+	}
+
+	/**
+	 * @return the hasStart
+	 */
+	public boolean hasStart() {
+		return hasStart;
+	}
+
+	/**
+	 * @return the hasId
+	 */
+	public boolean hasId() {
+		return hasId;
+	}
+
+	/**
+	 * @return the hasStar
+	 */
+	public boolean hasStar() {
+		return hasStar;
+	}
+
+	/**
+	 * @return the hasComp
+	 */
+	public boolean hasComp() {
+		return hasComp;
+	}
+
+	/**
+	 * @return the hasCompafter
+	 */
+	public boolean isHasCompafter() {
+		return hasCompafter;
+	}
+
+	/**
+	 * @return the hasCompbefore
+	 */
+	public boolean hasCompbefore() {
+		return hasCompbefore;
+	}
+
+	/**
+	 * @return the hasModbefore
+	 */
+	public boolean hasModbefore() {
+		return hasModbefore;
+	}
+
+	/**
+	 * @return the hasModafter
+	 */
+	public boolean hasModafter() {
+		return hasModafter;
+	}
+
+	/**
+	 * @return the hasStartafter
+	 */
+	public boolean hasStartafter() {
+		return hasStartafter;
+	}
+
+	/**
+	 * @return the hasStartbefore
+	 */
+	public boolean hasStartbefore() {
+		return hasStartbefore;
+	}
+
+	/**
+	 * @return the hasAfter
+	 */
+	public boolean hasAfter() {
+		return hasAfter;
+	}
+
+	/**
+	 * @return the hasBefore
+	 */
+	public boolean hasBefore() {
+		return hasBefore;
+	}
+
+	/**
+	 * @return the hasLonger
+	 */
+	public boolean hasLonger() {
+		return hasLonger;
+	}
+
+	/**
+	 * @return the hasShorter
+	 */
+	public boolean hasShorter() {
+		return hasShorter;
+	}
+
+	/**
+	 * @return the hasParent
+	 */
+	public boolean hasParent() {
+		return hasParent;
+	}
+
+	/**
+	 * @return the hasStatus
+	 */
+	public boolean hasStatus() {
+		return hasStatus;
+	}
+
+	/**
+	 * @return the hasRepeat
+	 */
+	public boolean hasRepeat() {
+		return hasRepeat;
+	}
+
+	/**
+	 * @return the hasPriorit
+	 */
+	public boolean hasPriority() {
+		return hasPriority;
+	}
+
+	/**
+	 * @return the hasGoal
+	 */
+	public boolean hasGoal() {
+		return hasGoal;
+	}
+
+	/**
+	 * @return the hasContext
+	 */
+	public boolean hasContext() {
+		return hasContext;
+	}
+
+	/**
+	 * @return the hasFolder
+	 */
+	public boolean hasFolder() {
+		return hasFolder;
+	}
+
+	/**
+	 * @return the hasTag
+	 */
+	public boolean hasTag() {
+		return hasTag;
+	}
+
+	/**
+	 * @return the hasTitle
+	 */
+	public boolean hasTitle() {
+		return hasTitle;
 	} 
 	
 }

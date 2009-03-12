@@ -1,5 +1,6 @@
 package org.loststone.toodledo.util;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.joda.time.DateTime;
@@ -18,21 +19,14 @@ public class AuthToken {
 		this.token = token; 
 		
 		// get the key
-		MessageDigest messagedigest;
-		String md5pass; 
 		String total; 
 		
 		try {
-			messagedigest = MessageDigest.getInstance("MD5");
-			// md5 from the password
-			messagedigest.update(password.getBytes());
-			md5pass = new String(messagedigest.digest());
-			
-			total = md5pass+token+username;
-			messagedigest.update(total.getBytes());
-			this.key = new String(messagedigest.digest());
-			
+			total = MD5(password)+token+username;
+			this.key = MD5(total);
 		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		
@@ -68,6 +62,31 @@ public class AuthToken {
 	 */
 	public int getRemainingTime() {
 		return Math.max(0, this.date.getSecondOfDay() - new DateTime().getSecondOfDay());
+	}
+	
+	private String convertToHex(byte[] data) {
+        StringBuffer buf = new StringBuffer();
+        for (int i = 0; i < data.length; i++) {
+        	int halfbyte = (data[i] >>> 4) & 0x0F;
+        	int two_halfs = 0;
+        	do {
+	        	if ((0 <= halfbyte) && (halfbyte <= 9))
+	                buf.append((char) ('0' + halfbyte));
+	            else
+	            	buf.append((char) ('a' + (halfbyte - 10)));
+	        	halfbyte = data[i] & 0x0F;
+        	} while(two_halfs++ < 1);
+        }
+        return buf.toString();
+    }
+ 
+	private String MD5(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException  {
+		MessageDigest md;
+		md = MessageDigest.getInstance("MD5");
+		byte[] md5hash = new byte[32];
+		md.update(text.getBytes("iso-8859-1"), 0, text.length());
+		md5hash = md.digest();
+		return convertToHex(md5hash);
 	}
 
 }
