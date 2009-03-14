@@ -1,28 +1,48 @@
 package org.loststone.toodledo;
 
+/**
+ * This class represents a Context in toodledo.
+ * <p>
+ * From the toodledo webpage:
+ * <p>
+ * <i>Contexts help you organize your tasks by where you are and what you are doing. 
+ * The context filter on Toodledo will hide every task that does not match your current context,
+ *  so you can quickly see only those items which are important to you at the moment.</i>
+ * @author lant
+ *
+ */
 public class Context {
 	int id;
 	String name;
 	
 	boolean hasName = false;
 	
+	/**
+	 * Checks if the context has an assigned name.
+	 * @return
+	 */
 	public boolean hasName() {
 		return this.hasName;
 	}
+	
 	/**
-	 * @return the id
+	 * Gets the toodledo internal id of this context.
+	 * @return id
 	 */
 	public int getId() {
 		return id;
 	}
+	
 	/**
-	 * @param id the id to set
+	 * Sets the toodledo internal id for this context.
+	 * @param id to set.
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	/**
-	 * @return the name
+	 * @return The name of this context.
 	 */
 	public String getName() {
 		return name;

@@ -9,6 +9,7 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.loststone.toodledo.Goal;
+import org.loststone.toodledo.ToodledoApiException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -56,7 +57,11 @@ public class GoalsParser extends DefaultHandler {
 			tmp_ = new Goal();
 			//create a new instance of employee
 			tmp_.setId(Integer.parseInt(attributes.getValue("id")));
-			tmp_.setLevel(Integer.parseInt(attributes.getValue("level")));
+			try {
+				tmp_.setLevel(Integer.parseInt(attributes.getValue("level")));
+			} catch (ToodledoApiException e) {
+				e.printStackTrace();
+			}
 			tmp_.setContributes(Integer.parseInt(attributes.getValue("contributes")));
 			int tmpBool = Integer.parseInt(attributes.getValue("archived"));
 			if (tmpBool == 1)

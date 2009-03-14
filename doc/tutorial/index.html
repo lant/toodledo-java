@@ -6,8 +6,13 @@ Toodledo Java api documentation.
 </head>
 <body>
 <h1>TOC</h1>
+<hr>
 <ul>
 <li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#versions">Versions</a></li>
+<ul>
+<li><a href="#todo">Todo</a></li>
+</ul>
 <li><a href="#intro">Intro</a></li>
 <li><a href="#usage">Usage</a></li>
 <ul>
@@ -15,22 +20,50 @@ Toodledo Java api documentation.
 <li> <a href="#utapi">Using the API</a>
 <li> <a href="#ucstd">Using the components as standalone</a>
 </ul>
+<li><a href="#contact">Contact</a></li>
 </ul>
 <h2><a name="disclaimer">Disclaimer</a></h2>
 Hello all, this is an <b>UNOFFICIAL</b> implementation of the API from <a href="http://www.toodledo.com/info/api_doc.php">toodledo</a>.<p>
 Of course it's free software, bla bla bla bla bla bla. So, if you build a critical system using this api and then everything runs out of memory and you end up killing dozens of elders... it's not my problem.<p>
 Having said that...
+<h2><a name="versions">Versions</a></h2>
+<b>Release 0.1</b> Basic usage.
+<h3><a name="todo">Todo</a></h3>
+<ul>
+	<li> Refactoring in the Request and Response classes and subclasses.
+</ul>
 <h2><a name="intro">Intro</a></h2>
 Well yeah, I'm a toodledo user and i just wanted to use that for some of my stuff, i basically program in Java, and seems like the toodledo guys haven't got an official Java api (nasty people), so i had to make one. That's it.
 <h2><a name="usage">Usage</a></h2>
 Pretty basic and pretty straightforward. 
+<p>
+There's an interface with some "handy" methods, they should be enough for any basic usage of toodledo:
+<p>
+<code>org.loststone.toodledo.ToodledoApi</code>
+<p>
+and it has its implementation file in the same package: <code>org.loststone.toodledo.ToodledoApiImpl</code> it's also a good example of how to use the other methods in the library.
+<p>
+If anyone needs anything that's not in the interface feel free to code it and add it to the library. Basically what all the methods do is create a Request, which inherits from the <code>org.loststone.toodledo.request.Request</code> class and then return a class than inherits from <code>org.loststone.toodledo.response.Response</code>, like this we encapsulate all the HTTP stuff, and the <code>Response</code> inherited class contains a <code>getResponseContent</code> that gives back the info from the call. If the response is easy you can parse the output there, but if the response is something bigger, like one of those xmls then you can use one class at the package <code>org.loststone.toodledo.xml</code> to parse it. Up to you.
+<p>
+Then, more advanced stuff:
 <ul>
 <li> <a href="#authentif">Authentification</a>
 <li> <a href="#utapi">Using the API</a>
 <li> <a href="#ucstd">Using the components as standalone</a>
 </ul>
 <h3><a name="authentif"> Authentification </a></h3>
+As this is a library, every program that uses it should be able to deal with more than one user concurrently. So, if you use the <code>initialize</code> method in the interface you'll get a <code>AuthToken</code>, this is an object which contains a key that will be valid for 4 hours, so, for every user you must cache or serialize or whatever that object. If you try to authenticate several times the same user (use the <code>initialize</code> method for the same user) that user will be banned temporarily from using the API, and that's not good. So, use that call or get an <code>AuthToken</code> manually and save that key for future use.
 <h3><a name="utapi"> Using the API </a></h3>
+No problem here, the API is very straightforward and easy to use, if you've got any doubt you can check the toodledo API documentation <a href="http://www.toodledo.com/info/api_doc.php">here</a>.
 <h3><a name="ucstd"> Using the components as standalone </a></h3>
+Every method of the Toodledo REST API have a REQUEST and a RESPONSE method. Some of them a litte cumbersome as they involve some xml parsing and bla bla, but other than that they're very easy. <p>
+All the requests use the commons-http package to do HTTP GET's to the REST API.
+<h2><a name="contact">Contact</a></h2>
+You can contact me at: <p>
+<ul>
+	<li> e-mail / jabber: phlegias@gmail.com
+</ul>
+<hr>
+<i>Last modified: </i> 14/3/2009
 </body>
 </html>

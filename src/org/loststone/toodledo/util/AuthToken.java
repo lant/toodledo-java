@@ -5,17 +5,23 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import org.joda.time.DateTime;
 
+/**
+ * This class holds the key for the usage of one single user.
+ * @author lant
+ *
+ */
 public class AuthToken {
 	private String token; 
 	private String key;
 	private DateTime date;
 	
-	
+	/**
+	 * Creates the key for a user.
+	 * @param password
+	 * @param username
+	 * @param token
+	 */
 	public AuthToken(String password, String username, String token) {
-		System.out.println("password: "+password);
-		System.out.println("username: "+username);
-		System.out.println("token   : "+token);
-		
 		this.token = token; 
 		
 		// get the key
@@ -42,6 +48,7 @@ public class AuthToken {
 	
 	
 	/**
+	 * The key is what is needed to use the REST API.
 	 * @return the key
 	 */
 	public String getKey() {
@@ -57,13 +64,19 @@ public class AuthToken {
 	}
 	
 	/**
-	 * Returns the remainin time of validity for this token in seconds.
+	 * Returns the remaining time of validity for this token in seconds.
 	 * @return seconds until this token will be canceled.
 	 */
 	public int getRemainingTime() {
 		return Math.max(0, this.date.getSecondOfDay() - new DateTime().getSecondOfDay());
 	}
 	
+	/**
+	 * Get the stuff and convert it to Hex.
+	 * creepy, got it from the internets :P
+	 * @param data
+	 * @return
+	 */
 	private String convertToHex(byte[] data) {
         StringBuffer buf = new StringBuffer();
         for (int i = 0; i < data.length; i++) {
@@ -80,11 +93,18 @@ public class AuthToken {
         return buf.toString();
     }
  
+	/**
+	 * private stuff for converting strings to md5. 
+	 * @param text
+	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws UnsupportedEncodingException
+	 */
 	private String MD5(String text) throws NoSuchAlgorithmException, UnsupportedEncodingException  {
 		MessageDigest md;
 		md = MessageDigest.getInstance("MD5");
 		byte[] md5hash = new byte[32];
-		md.update(text.getBytes("iso-8859-1"), 0, text.length());
+		md.update(text.getBytes("UTF-8"), 0, text.length());
 		md5hash = md.digest();
 		return convertToHex(md5hash);
 	}

@@ -60,14 +60,7 @@ public class Todo {
 	private boolean hasTitle;
 	
 	public Todo() {}
-	
-	/**
-	 * Creates a todo from the xml representation.
-	 * @param xml
-	 */
-	public Todo(String xml) {
-		
-	}
+
 	
 	/**
 	 * @return the title
