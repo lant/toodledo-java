@@ -33,7 +33,7 @@ public class GoalsParser extends DefaultHandler {
 			//get a new instance of parser
 			SAXParser sp = spf.newSAXParser();
 			//parse the string and also register this class for call backs
-			sp.parse(new ByteArrayInputStream(xml.getBytes()), this);
+			sp.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")), this);
 
 		}catch(SAXException se) {
 			se.printStackTrace();
@@ -55,10 +55,10 @@ public class GoalsParser extends DefaultHandler {
 		if(qName.equalsIgnoreCase("goal")) {
 			tmp_ = new Goal();
 			//create a new instance of employee
-			tmp_.setId(Integer.getInteger(attributes.getValue("id")));
-			tmp_.setLevel(Integer.getInteger(attributes.getValue("level")));
-			tmp_.setContributes(Integer.getInteger(attributes.getValue("contributes")));
-			int tmpBool = Integer.getInteger(attributes.getValue("archived"));
+			tmp_.setId(Integer.parseInt(attributes.getValue("id")));
+			tmp_.setLevel(Integer.parseInt(attributes.getValue("level")));
+			tmp_.setContributes(Integer.parseInt(attributes.getValue("contributes")));
+			int tmpBool = Integer.parseInt(attributes.getValue("archived"));
 			if (tmpBool == 1)
 				tmp_.setArchive(true);
 			else

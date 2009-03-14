@@ -6,6 +6,7 @@
 <property name="jar.dir"     value="${build.dir}/jar"/>
 <property name="main-class"  value="org.loststone.toodledo.client.Client"/>
 <property name="lib.dir"     value="lib"/>
+<property name="javadoc.dir"	value="doc/javadoc"/>
 
 <path id="classpath">
 	<fileset dir="${lib.dir}" includes="**/*.jar"/>
@@ -39,6 +40,20 @@
 		<path location="${jar.dir}/${ant.project.name}.jar"/>
   </classpath>
   </java>
+</target>
+
+<target name="javadoc">
+<mkdir dir="${javadoc.dir}"/>
+
+<javadoc packagenames="org.loststone.toodledo.*"
+sourcepath="src"
+defaultexcludes="yes"
+destdir="${javadoc.dir}"
+author="true"
+version="true"
+use="true"
+windowtitle="Toodledo Java API">
+</javadoc>
 </target>
 
 </project>

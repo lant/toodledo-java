@@ -2,7 +2,6 @@ package org.loststone.toodledo;
 
 public class Context {
 	int id;
-	// TODO up to 32 chars
 	String name;
 	
 	boolean hasName = false;
@@ -28,12 +27,17 @@ public class Context {
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
-	 * TODO up to 32 chars
+	 * Sets the name for this context.
+	 * @param Sets the name for the context. This is 32 chars maximum, names with more that that will be cropped.
 	 */
 	public void setName(String name) {
-		this.name = name;
+		if (name.length() > 32)
+			this.name = name.substring(0,31);
+		else
+			this.name = name;
+		
 		this.hasName = true;
 	}
 	

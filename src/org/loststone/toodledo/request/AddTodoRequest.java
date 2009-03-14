@@ -16,9 +16,9 @@ public class AddTodoRequest extends Request {
 
 	public AddTodoRequest(AuthToken token, Todo todo) throws ToodledoApiException {
 		super();
-		this.url = "http://api.toodledo.com/api.php?method=addTask;key="+token.getKey()+";";
+		this.url = "http://api.toodledo.com/api.php?method=addTask;key="+token.getKey();
 		StringBuffer buff = new StringBuffer();
-		if (todo.hasTitle()) { buff.append("title=").append(todo.getTitle()); 
+		if (todo.hasTitle()) { buff.append(";title=").append(todo.getTitle()); 
 		} else { 
 			throw new ToodledoApiException("Todo object at least must have a title!");
 		}

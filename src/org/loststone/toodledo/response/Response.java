@@ -21,6 +21,11 @@ public abstract class Response {
 		return succeed;
 	}
 
+	/**
+	 * This method returns the value if it's a simple value or the xml for further parsing.
+	 * @return
+	 * @throws ToodledoApiException
+	 */
 	public abstract String getResponseContent() throws ToodledoApiException;
 
 	

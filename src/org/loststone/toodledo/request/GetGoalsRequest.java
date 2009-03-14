@@ -7,7 +7,7 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.ToodledoApiException;
-import org.loststone.toodledo.response.GetContextsResponse;
+import org.loststone.toodledo.response.GetGoalsResponse;
 import org.loststone.toodledo.response.Response;
 import org.loststone.toodledo.util.AuthToken;
 
@@ -25,7 +25,7 @@ public class GetGoalsRequest extends Request {
 		Response addResp = null; 
 		try {
 			client.executeMethod(method);
-			addResp = new GetContextsResponse(method.getResponseBodyAsString());
+			addResp = new GetGoalsResponse(method.getResponseBodyAsString());
 		} catch (HttpException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -7,6 +7,10 @@ public class AddTodoResponse extends Response {
 
 	public AddTodoResponse(String resp) {
 		super(resp);
+		if (response.contains("error")) 
+			this.succeed = false;
+		else
+			this.succeed = true;
 	}
 	
 	@Override

@@ -6,7 +6,6 @@ public class Goal {
 	int level; 
 	int contributes; 
 	boolean archive; 
-	// TODO up to 255
 	String name;
 	
 	boolean hasName = false;
@@ -80,11 +79,16 @@ public class Goal {
 	public String getName() {
 		return name;
 	}
+	
 	/**
-	 * @param name the name to set
+	 * Sets the name for that goal.
+	 * @param name for this goal. If the name is longer than 255 it will be cropped.
 	 */
 	public void setName(String name) {
-		this.name = name;
+		if (name.length() > 255)
+			this.name = name.substring(0,254);
+		else
+			this.name = name;
 		this.hasName = true;
 	} 
 	

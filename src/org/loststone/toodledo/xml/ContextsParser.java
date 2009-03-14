@@ -33,7 +33,7 @@ public class ContextsParser extends DefaultHandler {
 			//get a new instance of parser
 			SAXParser sp = spf.newSAXParser();
 			//parse the string and also register this class for call backs
-			sp.parse(new ByteArrayInputStream(xml.getBytes()), this);
+			sp.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")), this);
 
 		}catch(SAXException se) {
 			se.printStackTrace();
@@ -54,7 +54,7 @@ public class ContextsParser extends DefaultHandler {
 		
 		if(qName.equalsIgnoreCase("context")) {
 			tmp_ = new Context();
-			tmp_.setId(Integer.getInteger(attributes.getValue("id")));
+			tmp_.setId(Integer.parseInt(attributes.getValue("id")));
 		}
 	}
 	

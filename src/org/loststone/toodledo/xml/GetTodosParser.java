@@ -33,7 +33,7 @@ public class GetTodosParser extends DefaultHandler {
 			//get a new instance of parser
 			SAXParser sp = spf.newSAXParser();
 			//parse the string and also register this class for call backs
-			sp.parse(new ByteArrayInputStream(xml.getBytes()), this);
+			sp.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")), this);
 
 		}catch(SAXException se) {
 			se.printStackTrace();

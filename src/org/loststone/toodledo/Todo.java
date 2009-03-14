@@ -77,12 +77,15 @@ public class Todo {
 	}
 	
 	/**
-	 * @param title the title to set
+	 * Sets the title for the task.
+	 * @param title the title to set. If the title is longer than 255 charts it will be cropped.
 	 */
 	public void setTitle(String title) {
-		// TODO up to 255 chars
-
-		this.title = title;
+		if (title.length() > 254)
+			this.title = title.substring(0,254);
+		else
+			this.title = title;
+		
 		this.hasTitle = true;
 	}
 	

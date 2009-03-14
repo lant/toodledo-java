@@ -33,7 +33,7 @@ public class FolderParser extends DefaultHandler {
 			//get a new instance of parser
 			SAXParser sp = spf.newSAXParser();
 			//parse the string and also register this class for call backs
-			sp.parse(new ByteArrayInputStream(xml.getBytes()), this);
+			sp.parse(new ByteArrayInputStream(xml.getBytes("UTF-8")), this);
 
 		}catch(SAXException se) {
 			se.printStackTrace();
@@ -55,18 +55,18 @@ public class FolderParser extends DefaultHandler {
 		if(qName.equalsIgnoreCase("folder")) {
 			tmp_ = new Folder();
 			//create a new instance of employee
-			tmp_.setId(Integer.getInteger(attributes.getValue("id")));
-			int tmpBool = Integer.getInteger(attributes.getValue("private"));
+			tmp_.setId(Integer.parseInt(attributes.getValue("id")));
+			int tmpBool = Integer.parseInt(attributes.getValue("private"));
 			if (tmpBool == 1) 
 				tmp_.setBPrivate(true);
 			else
 				tmp_.setBPrivate(false);
-			tmpBool = Integer.getInteger(attributes.getValue("archived"));
+			tmpBool = Integer.parseInt(attributes.getValue("archived"));
 			if (tmpBool == 1)
 				tmp_.setArchived(true);
 			else
 				tmp_.setArchived(false);
-			tmp_.setOrder(Integer.getInteger(attributes.getValue("order")));
+			tmp_.setOrder(Integer.parseInt(attributes.getValue("order")));
 		}
 	}
 	

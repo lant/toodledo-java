@@ -8,7 +8,7 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Todo;
 import org.loststone.toodledo.ToodledoApiException;
-import org.loststone.toodledo.response.AddTodoResponse;
+import org.loststone.toodledo.response.ModifyTodoResponse;
 import org.loststone.toodledo.response.Response;
 import org.loststone.toodledo.util.AuthToken;
 
@@ -51,7 +51,7 @@ public class ModifyTodoRequest extends Request {
 		Response addResp = null; 
 		try {
 			client.executeMethod(method);
-			addResp = new AddTodoResponse(method.getResponseBodyAsString());
+			addResp = new ModifyTodoResponse(method.getResponseBodyAsString());
 		} catch (HttpException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

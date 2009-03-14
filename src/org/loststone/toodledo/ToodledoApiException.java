@@ -7,9 +7,7 @@ public class ToodledoApiException extends Exception {
 		super(substring);
 	}
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 }

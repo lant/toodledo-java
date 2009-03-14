@@ -5,7 +5,6 @@ public class Folder {
 	boolean bPrivate;
 	boolean archived;
 	int order;
-	// TODO up to 32 charts
 	String sName;
 	
 	boolean hasName = false;
@@ -74,12 +73,17 @@ public class Folder {
 	public String getSName() {
 		return sName;
 	}
+	
 	/**
-	 * @param name the sName to set
-	 * TODO up to 32 chars
+	 * Set the name of the folder.
+	 * @param name the folder. If the name is longer than 32 chars it will be cropped.
 	 */
 	public void setSName(String name) {
-		sName = name;
+		if (name.length() > 32)
+			sName = name.substring(0,31);
+		else
+			sName = name;
+		
 		this.hasName = true;
 	}
 	
