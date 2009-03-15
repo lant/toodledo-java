@@ -41,7 +41,11 @@ There's an interface with some "handy" methods, they should be enough for any ba
 <p>
 <code>org.loststone.toodledo.ToodledoApi</code>
 <p>
-and it has its implementation file in the same package: <code>org.loststone.toodledo.ToodledoApiImpl</code> it's also a good example of how to use the other methods in the library.
+and it has its implementation file in the same package: <code>org.loststone.toodledo.ToodledoApiImpl</code> it's also a good example of how to use the other methods in the library. Also, there's the javadoc in the doc/javadoc folder. <p>
+<b>Angry User: </b>Hey!!! the doc/javadoc dir is empty!!!!<br>
+<b>Me: </b> ant javadoc <br>
+<b>Angry (and now ashamed user): </b> Oh, yeah, sorry about that<br>
+<b>Me:</b> -_-'
 <p>
 If anyone needs anything that's not in the interface feel free to code it and add it to the library. Basically what all the methods do is create a Request, which inherits from the <code>org.loststone.toodledo.request.Request</code> class and then return a class than inherits from <code>org.loststone.toodledo.response.Response</code>, like this we encapsulate all the HTTP stuff, and the <code>Response</code> inherited class contains a <code>getResponseContent</code> that gives back the info from the call. If the response is easy you can parse the output there, but if the response is something bigger, like one of those xmls then you can use one class at the package <code>org.loststone.toodledo.xml</code> to parse it. Up to you.
 <p>

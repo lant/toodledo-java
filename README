@@ -1,0 +1,13 @@
+toodledo-java
+-------------
+
+This is an _UNOFFICIAL_ implementation of the www.toodledo.com REST API in Java.
+Coded by me (Marc) phlegias@gmail.com
+
+Usage
+-----
+This is basically a library with a nice and helpfull (hopefully) API to work with Toodledo. Easily extensible and bla bla bla.
+
+Libs
+----
+I use some libs, like the mytical httpclient-commons. I've not uploaded the jars in the repository, if you're using this you'll need to download them separately.
