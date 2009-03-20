@@ -6,20 +6,15 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
-import org.loststone.toodledo.Todo;
 import org.loststone.toodledo.exception.ToodledoApiException;
-import org.loststone.toodledo.response.GetTodosResponse;
+import org.loststone.toodledo.response.GetUserIdResponse;
 import org.loststone.toodledo.response.Response;
-import org.loststone.toodledo.util.AuthToken;
 
-public class GetTodosRequest extends Request {
+public class GetUserIdRequest extends Request {
 
-	public GetTodosRequest(AuthToken token, Todo filter) throws ToodledoApiException {
+	public GetUserIdRequest(String email, String password) throws ToodledoApiException {
 		super();
-		this.url = "http://api.toodledo.com/api.php?method=getTasks;key="+token.getKey();
-		if (filter != null) {
-			
-		}
+		this.url = "http://api.toodledo.com/api.php?method=getUserId;email="+email+";pass="+password+";";
 	}
 	
 
@@ -27,10 +22,10 @@ public class GetTodosRequest extends Request {
 	public Response exec() {
 		HttpClient client = new HttpClient();
 		HttpMethod method = new GetMethod(this.url);
-		Response addResp = null; 
+		Response getUser = null; 
 		try {
 			client.executeMethod(method);
-			addResp = new GetTodosResponse(method.getResponseBodyAsString());
+			getUser = new GetUserIdResponse(method.getResponseBodyAsString());
 		} catch (HttpException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -38,7 +33,7 @@ public class GetTodosRequest extends Request {
 		} finally {
 			method.releaseConnection();
 		}
-		return addResp;
+		return getUser;
 	}
 
 }

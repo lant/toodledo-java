@@ -1,6 +1,6 @@
 package org.loststone.toodledo.response;
 
-import org.loststone.toodledo.ToodledoApiException;
+import org.loststone.toodledo.exception.ToodledoApiException;
 
 /**
  * This class holds a response from the server.

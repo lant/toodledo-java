@@ -3,9 +3,9 @@ package org.loststone.toodledo.response;
 import org.loststone.toodledo.exception.ToodledoApiException;
 
 
-public class GetGoalsResponse extends Response {
+public class GetUserIdResponse extends Response {
 
-	public GetGoalsResponse(String resp) {
+	public GetUserIdResponse(String resp) {
 		super(resp);
 		// check for errors:
 		if (response.contains("error")) 

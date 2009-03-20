@@ -2,6 +2,9 @@ package org.loststone.toodledo;
 
 import java.util.List;
 
+import org.loststone.toodledo.exception.IncorrectUserPasswordException;
+import org.loststone.toodledo.exception.MissingPasswordException;
+import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.request.AddContextRequest;
 import org.loststone.toodledo.request.AddFolderRequest;
 import org.loststone.toodledo.request.AddGoalRequest;
@@ -12,6 +15,7 @@ import org.loststone.toodledo.request.GetContextsRequest;
 import org.loststone.toodledo.request.GetFoldersRequest;
 import org.loststone.toodledo.request.GetGoalsRequest;
 import org.loststone.toodledo.request.GetTodosRequest;
+import org.loststone.toodledo.request.GetUserIdRequest;
 import org.loststone.toodledo.request.ModifyTodoRequest;
 import org.loststone.toodledo.request.Request;
 import org.loststone.toodledo.response.AddContextResponse;
@@ -24,11 +28,13 @@ import org.loststone.toodledo.response.GetContextsResponse;
 import org.loststone.toodledo.response.GetFoldersResponse;
 import org.loststone.toodledo.response.GetGoalsResponse;
 import org.loststone.toodledo.response.GetTodosResponse;
+import org.loststone.toodledo.response.GetUserIdResponse;
 import org.loststone.toodledo.response.ModifyTodoResponse;
 import org.loststone.toodledo.util.AuthToken;
 import org.loststone.toodledo.xml.ContextsParser;
 import org.loststone.toodledo.xml.FolderParser;
 import org.loststone.toodledo.xml.GetTodosParser;
+import org.loststone.toodledo.xml.GetUserIdParser;
 import org.loststone.toodledo.xml.GoalsParser;
 
 public class ToodledoApiImpl implements ToodledoApi {
@@ -163,6 +169,17 @@ public class ToodledoApiImpl implements ToodledoApi {
 			return Integer.parseInt(response.getResponseContent());
 		else
 			return -1;
+	}
+
+	@Override
+	public String getUserId(String mail, String password)
+			throws ToodledoApiException, IncorrectUserPasswordException, MissingPasswordException {
+		GetUserIdRequest request = new GetUserIdRequest(mail,password);
+		GetUserIdResponse response = (GetUserIdResponse)request.exec();
+		if(response.succeeded()) 
+			return new GetUserIdParser(response.getResponseContent()).getUserId();
+		else
+			return null;
 	}
 
 }

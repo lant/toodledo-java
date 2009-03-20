@@ -58,6 +58,8 @@ Then, more advanced stuff:
 </ul>
 <h3><a name="authentif"> Authentification </a></h3>
 As this is a library, every program that uses it should be able to deal with more than one user concurrently. So, if you use the <code>initialize</code> method in the interface you'll get a <code>AuthToken</code>, this is an object which contains a key that will be valid for 4 hours, so, for every user you must cache or serialize or whatever that object. If you try to authenticate several times the same user (use the <code>initialize</code> method for the same user) that user will be banned temporarily from using the API, and that's not good. So, use that call or get an <code>AuthToken</code> manually and save that key for future use.
+<p>
+The <code>initialize</code> method needs the userid, not the username, you can get the userid from the toodledo webpage, it's always a 15 or 16 hexadecimal string. If for any reason you cannot log into the webpage and get the userid for a user you can user the <code>getUserId</code> method in the API. This method only requires the user e-mail and password. Take care using this method as it's sending the password in plain text format over the net as an http parameter. So, use it only if necessary.
 <h3><a name="utapi"> Using the API </a></h3>
 No problem here, the API is very straightforward and easy to use, if you've got any doubt you can check the toodledo API documentation <a href="http://www.toodledo.com/info/api_doc.php">here</a>.
 <h3><a name="ucstd"> Using the components as standalone </a></h3>
@@ -67,8 +69,9 @@ All the requests use the commons-http package to do HTTP GET's to the REST API.
 You can contact me at: <p>
 <ul>
 	<li> e-mail / jabber: phlegias@gmail.com
+	<li> irc (freenode): grind_lant
 </ul>
 <hr>
-<i>Last modified: </i> 14/3/2009
+<i>Last modified: </i> 20/3/2009
 </body>
 </html>

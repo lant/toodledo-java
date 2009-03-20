@@ -1,4 +1,4 @@
-package org.loststone.toodledo;
+package org.loststone.toodledo.exception;
 
 public class ToodledoApiException extends Exception {
 

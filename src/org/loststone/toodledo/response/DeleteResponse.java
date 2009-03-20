@@ -1,6 +1,6 @@
 package org.loststone.toodledo.response;
 
-import org.loststone.toodledo.ToodledoApiException;
+import org.loststone.toodledo.exception.ToodledoApiException;
 
 
 public class DeleteResponse extends Response {

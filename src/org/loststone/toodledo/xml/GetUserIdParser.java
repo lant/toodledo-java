@@ -2,33 +2,29 @@ package org.loststone.toodledo.xml;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.loststone.toodledo.Goal;
-import org.loststone.toodledo.exception.ToodledoApiException;
+import org.loststone.toodledo.exception.IncorrectUserPasswordException;
+import org.loststone.toodledo.exception.MissingPasswordException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class GoalsParser extends DefaultHandler {
+public class GetUserIdParser extends DefaultHandler {
 
 	String xml; 
 	String tempVal; 
-	Goal tmp_;
+	String userId = null; 
 	
-	ArrayList<Goal> goalsList; 
-	
-	public GoalsParser(String xml) {
+	public GetUserIdParser(String xml) {
 		tempVal = new String();
 		this.xml = xml;
-		goalsList = new ArrayList<Goal>();
 	}
 	
-	public ArrayList<Goal> getGoals() {
+	public String getUserId() throws IncorrectUserPasswordException, MissingPasswordException{
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		try {
 			//get a new instance of parser
@@ -44,31 +40,18 @@ public class GoalsParser extends DefaultHandler {
 			ie.printStackTrace();
 		}
 		
-		return goalsList;
+		if (Integer.parseInt(userId) == 0) {
+			throw new MissingPasswordException("Missing password");
+		} if (Integer.parseInt(userId) == 1) {
+			throw new IncorrectUserPasswordException("Username or password incorrect, or user nonexistant");
+		}
+		return userId;
 	}
 	
 	//Event Handlers
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
-	
 		tempVal = "";
-		
-		if(qName.equalsIgnoreCase("goal")) {
-			tmp_ = new Goal();
-			//create a new instance of employee
-			tmp_.setId(Integer.parseInt(attributes.getValue("id")));
-			try {
-				tmp_.setLevel(Integer.parseInt(attributes.getValue("level")));
-			} catch (ToodledoApiException e) {
-				e.printStackTrace();
-			}
-			tmp_.setContributes(Integer.parseInt(attributes.getValue("contributes")));
-			int tmpBool = Integer.parseInt(attributes.getValue("archived"));
-			if (tmpBool == 1)
-				tmp_.setArchive(true);
-			else
-				tmp_.setArchive(false);
-		}
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
@@ -76,9 +59,8 @@ public class GoalsParser extends DefaultHandler {
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		if(qName.equalsIgnoreCase("goal")) {
-			tmp_.setName(tempVal);
-			goalsList.add(tmp_);
+		if(qName.equalsIgnoreCase("userid")) {
+			userId = tempVal;
 		}
 	}
 

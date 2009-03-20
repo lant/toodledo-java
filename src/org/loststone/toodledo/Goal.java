@@ -1,5 +1,7 @@
 package org.loststone.toodledo;
 
+import org.loststone.toodledo.exception.ToodledoApiException;
+
 /**
  * This class represents the goal in toodledo.
  * @author lant

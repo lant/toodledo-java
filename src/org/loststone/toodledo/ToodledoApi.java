@@ -2,6 +2,9 @@ package org.loststone.toodledo;
 
 import java.util.List;
 
+import org.loststone.toodledo.exception.IncorrectUserPasswordException;
+import org.loststone.toodledo.exception.MissingPasswordException;
+import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.util.AuthToken;
 
 /**
@@ -124,5 +127,17 @@ public interface ToodledoApi {
 	 */
 	List<Goal> getGoals(AuthToken auth) throws ToodledoApiException;
 	
+	/**
+	 * Get a userId.
+	 * <b>Warning</b>. Please note that this call sends the password in PLAIN TEXT over the net
+	 * as an HTTP parameter.
+	 * @param e-mail.
+	 * @param password
+	 * @return The userId
+	 * @throws MissingPasswordException 
+	 * @throws IncorrectUserPasswordException 
+	 */
+	String getUserId(String eMail, String password) throws ToodledoApiException,
+		IncorrectUserPasswordException, MissingPasswordException;
 	
 }

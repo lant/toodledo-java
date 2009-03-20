@@ -7,7 +7,7 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Folder;
-import org.loststone.toodledo.ToodledoApiException;
+import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddFolderResponse;
 import org.loststone.toodledo.response.Response;
 import org.loststone.toodledo.util.AuthToken;
