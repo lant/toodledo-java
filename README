@@ -10,4 +10,4 @@ This is basically a library with a nice and helpfull (hopefully) API to work wit
 
 Libs
 ----
-I use some libs, like the mytical httpclient-commons. I've not uploaded the jars in the repository, if you're using this you'll need to download them separately.
+I've not uploaded the jars. All the libraries a free to download. There's a readme.txt file into the libs folder with the names of the libraries and the links to download them.
