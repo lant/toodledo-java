@@ -16,7 +16,11 @@ public abstract class Request {
 	protected String url = null; 
 	
 	//public abstract void buildRequest();
+
+	// TODO create a new method that gets back the response, which is a class that inherits
+	// from the abstract class response.
 	
+	// TODO  this is _wrong_ just execute the method and store the result as a string
 	public Response exec() {
 		HttpClient client = new HttpClient();
 		HttpMethod method = new GetMethod(this.url);
