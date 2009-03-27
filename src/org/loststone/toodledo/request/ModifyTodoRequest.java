@@ -1,11 +1,5 @@
 package org.loststone.toodledo.request;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Todo;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.ModifyTodoResponse;
@@ -42,24 +36,13 @@ public class ModifyTodoRequest extends Request {
 		
 		this.url = this.url.concat(buff.toString());
 	}
-	
 
 	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		Response addResp = null; 
-		try {
-			client.executeMethod(method);
-			addResp = new ModifyTodoResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return addResp;
+	public Response getResponse() {
+		if (this.xmlResponse == null) 
+			return null;
+		ModifyTodoResponse mresp = new ModifyTodoResponse(this.xmlResponse);
+		return mresp;
 	}
 
 }

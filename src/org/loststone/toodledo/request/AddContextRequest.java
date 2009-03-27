@@ -24,24 +24,5 @@ public class AddContextRequest extends Request {
 		}
 		this.url = this.url.concat(buff.toString());
 	}
-	
-
-	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		Response addResp = null; 
-		try {
-			client.executeMethod(method);
-			addResp = new AddContextResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return addResp;
-	}
 
 }

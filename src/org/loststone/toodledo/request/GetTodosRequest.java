@@ -22,23 +22,4 @@ public class GetTodosRequest extends Request {
 		}
 	}
 	
-
-	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		Response addResp = null; 
-		try {
-			client.executeMethod(method);
-			addResp = new GetTodosResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return addResp;
-	}
-
 }

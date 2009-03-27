@@ -16,23 +16,4 @@ public class AuthorizeRequest extends Request {
 		this.url = "http://api.toodledo.com/api.php?method=getToken;userid="+userId;
 	}
 	
-
-	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		AuthorizeResponse authResp = null; 
-		try {
-			client.executeMethod(method);
-			authResp = new AuthorizeResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return authResp;
-	}
-
 }

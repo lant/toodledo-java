@@ -17,23 +17,4 @@ public class GetUserIdRequest extends Request {
 		this.url = "http://api.toodledo.com/api.php?method=getUserId;email="+email+";pass="+password+";";
 	}
 	
-
-	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		Response getUser = null; 
-		try {
-			client.executeMethod(method);
-			getUser = new GetUserIdResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return getUser;
-	}
-
 }

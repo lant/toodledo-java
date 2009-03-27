@@ -18,23 +18,4 @@ public class GetFoldersRequest extends Request {
 		this.url = "http://api.toodledo.com/api.php?method=getFolders;key="+token.getKey();	
 	}
 	
-
-	@Override
-	public Response exec() {
-		HttpClient client = new HttpClient();
-		HttpMethod method = new GetMethod(this.url);
-		Response addResp = null; 
-		try {
-			client.executeMethod(method);
-			addResp = new GetFoldersResponse(method.getResponseBodyAsString());
-		} catch (HttpException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			method.releaseConnection();
-		}
-		return addResp;
-	}
-
 }

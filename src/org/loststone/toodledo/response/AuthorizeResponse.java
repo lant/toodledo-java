@@ -8,10 +8,7 @@ public class AuthorizeResponse extends Response {
 		super(response);
 	}
 
-	@Override
-	public int getResponseResult() {
-		return 0;
-	}
+
 
 	@Override
 	public String getResponseContent() throws ToodledoApiException {

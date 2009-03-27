@@ -7,17 +7,8 @@ public class DeleteResponse extends Response {
 
 	public DeleteResponse(String resp) {
 		super(resp);
-		if (response.contains("error")) 
-			this.succeed = false;
-		else
-			this.succeed = true;
 	}
-	
-	@Override
-	public int getResponseResult() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 	
 	// TODO refactor to the parent class.
 	public String getResponseContent() throws ToodledoApiException {
