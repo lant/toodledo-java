@@ -14,9 +14,16 @@ public abstract class Request {
 	protected String url = null; 
 	protected String xmlResponse = null; 
 	
-	
+	/**
+	 * Should execute the exec method and give back an appropiate response type. 
+	 * @return
+	 */
 	public abstract Response getResponse();
 	
+	/**
+	 * This methods executes the HTTP GET of the URL and stores the result
+	 * in String format in the xmlResponse field.
+	 */
 	public void exec() {
 		HttpClient client = new HttpClient();
 		HttpMethod method = new GetMethod(this.url);

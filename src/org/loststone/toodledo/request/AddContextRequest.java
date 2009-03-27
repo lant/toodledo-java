@@ -1,11 +1,5 @@
 package org.loststone.toodledo.request;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Context;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddContextResponse;
@@ -23,6 +17,13 @@ public class AddContextRequest extends Request {
 			throw new ToodledoApiException("Folder object at least must have a name!");
 		}
 		this.url = this.url.concat(buff.toString());
+	}
+
+	@Override
+	public Response getResponse() {
+		this.exec();
+		AddContextResponse response = new AddContextResponse(this.xmlResponse);
+		return response;
 	}
 
 }

@@ -1,11 +1,5 @@
 package org.loststone.toodledo.request;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Folder;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddFolderResponse;
@@ -31,6 +25,13 @@ public class AddFolderRequest extends Request {
 		}
 		
 		this.url = this.url.concat(buff.toString());
+	}
+
+	@Override
+	public Response getResponse() {
+		this.exec();
+		AddFolderResponse response = new AddFolderResponse(this.xmlResponse);
+		return response;
 	}
 	
 }

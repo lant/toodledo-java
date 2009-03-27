@@ -1,11 +1,5 @@
 package org.loststone.toodledo.request;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Goal;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddGoalResponse;
@@ -29,6 +23,13 @@ public class AddGoalRequest extends Request {
 			buff.append(";contributes=").append(goal.getContributes());
 		
 		this.url = this.url.concat(buff.toString());
+	}
+
+	@Override
+	public Response getResponse() {
+		this.exec();
+		AddGoalResponse response = new AddGoalResponse(this.xmlResponse);
+		return response;
 	}
 	
 

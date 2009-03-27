@@ -1,11 +1,5 @@
 package org.loststone.toodledo.request;
 
-import java.io.IOException;
-
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpMethod;
-import org.apache.commons.httpclient.methods.GetMethod;
 import org.loststone.toodledo.Todo;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.GetTodosResponse;
@@ -20,6 +14,13 @@ public class GetTodosRequest extends Request {
 		if (filter != null) {
 			
 		}
+	}
+
+	@Override
+	public Response getResponse() {
+		this.exec();
+		GetTodosResponse response = new GetTodosResponse(this.xmlResponse);
+		return response;
 	}
 	
 }

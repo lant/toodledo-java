@@ -11,7 +11,7 @@ public abstract class Response {
 	protected String response;
 	protected boolean succeed = false;
 
-	
+
 	public Response(String response) {
 		this.response = response;
 		if (response.contains("error")) 
@@ -19,7 +19,7 @@ public abstract class Response {
 		else
 			this.succeed = true;
 	}
-	
+
 	public boolean succeeded() {
 		return succeed;
 	}
@@ -35,5 +35,5 @@ public abstract class Response {
 		return this.response;
 	}
 
-	
+
 }

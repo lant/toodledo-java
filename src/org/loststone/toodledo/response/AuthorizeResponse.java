@@ -10,7 +10,6 @@ public class AuthorizeResponse extends Response {
 
 
 
-	@Override
 	public String getResponseContent() throws ToodledoApiException {
 		String result = null;		
 		// check for errors:
