@@ -28,8 +28,6 @@ public abstract class Response {
 	 * This method returns the xml for further parsing.
 	 * @return
 	 * @throws ToodledoApiException
-	 * TODO create getResponseContentAsXml with string
-	 * TODO create getParsedResponse in every class.
 	 */
 	public String getXmlResponseContent() throws ToodledoApiException {
 		return this.response;

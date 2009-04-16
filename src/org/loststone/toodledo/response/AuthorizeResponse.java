@@ -13,14 +13,12 @@ public class AuthorizeResponse extends Response {
 	public String getResponseContent() throws ToodledoApiException {
 		String result = null;		
 		// check for errors:
-		if (response.contains("error")) {
-			this.succeed = false;
+		if (!this.succeeded()) {
 			throw new ToodledoApiException(response.substring(response.indexOf("<error>")+7, 
 					response.indexOf("</error>")));
 		}
 		
 		result = response.substring(response.indexOf("<token>")+7, response.indexOf("</token>"));
-		this.succeed = true;
 		return result; 
 	}
 }

@@ -3,12 +3,11 @@ package org.loststone.toodledo.response;
 import org.loststone.toodledo.exception.ToodledoApiException;
 
 
-public class AddTodoResponse extends Response {
+public class DeleteTodoResponse extends Response {
 
-	public AddTodoResponse(String resp) {
+	public DeleteTodoResponse(String resp) {
 		super(resp);
 	}
-	
 
 	public String getResponseContent() throws ToodledoApiException {
 		String result = null;		
@@ -18,7 +17,7 @@ public class AddTodoResponse extends Response {
 					response.indexOf("</error>")));
 		}
 		
-		result = response.substring(response.indexOf("<added>")+7, response.indexOf("</added>"));
+		result = response.substring(response.indexOf("<success>")+9, response.indexOf("</success>"));
 		return result; 
 	}
 
