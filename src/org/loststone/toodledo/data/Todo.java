@@ -1,4 +1,4 @@
-package org.loststone.toodledo;
+package org.loststone.toodledo.data;
 
 import org.loststone.toodledo.util.TdDate;
 import org.loststone.toodledo.util.TdDateTime;

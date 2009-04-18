@@ -1,4 +1,4 @@
-package org.loststone.toodledo;
+package org.loststone.toodledo.data;
 
 public enum Repeat {
 	NO_REPEAT(0),

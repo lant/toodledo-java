@@ -2,6 +2,10 @@ package org.loststone.toodledo;
 
 import java.util.List;
 
+import org.loststone.toodledo.data.Context;
+import org.loststone.toodledo.data.Folder;
+import org.loststone.toodledo.data.Goal;
+import org.loststone.toodledo.data.Todo;
 import org.loststone.toodledo.exception.IncorrectUserPasswordException;
 import org.loststone.toodledo.exception.MissingPasswordException;
 import org.loststone.toodledo.exception.ToodledoApiException;

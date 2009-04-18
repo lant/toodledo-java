@@ -1,6 +1,6 @@
 package org.loststone.toodledo.request;
 
-import org.loststone.toodledo.Folder;
+import org.loststone.toodledo.data.Folder;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddFolderResponse;
 import org.loststone.toodledo.response.Response;

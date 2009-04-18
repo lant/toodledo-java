@@ -1,4 +1,4 @@
-package org.loststone.toodledo;
+package org.loststone.toodledo.data;
 
 /**
  * This class represents a folder in toodledo.

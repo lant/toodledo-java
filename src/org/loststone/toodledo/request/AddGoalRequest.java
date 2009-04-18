@@ -1,6 +1,6 @@
 package org.loststone.toodledo.request;
 
-import org.loststone.toodledo.Goal;
+import org.loststone.toodledo.data.Goal;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddGoalResponse;
 import org.loststone.toodledo.response.Response;

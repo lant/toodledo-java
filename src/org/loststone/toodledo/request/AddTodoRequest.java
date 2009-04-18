@@ -1,6 +1,6 @@
 package org.loststone.toodledo.request;
 
-import org.loststone.toodledo.Todo;
+import org.loststone.toodledo.data.Todo;
 import org.loststone.toodledo.exception.ToodledoApiException;
 import org.loststone.toodledo.response.AddTodoResponse;
 import org.loststone.toodledo.response.Response;
