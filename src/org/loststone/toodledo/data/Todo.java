@@ -17,9 +17,11 @@ public class Todo {
 	int goal; // 0 no goal
 	Priority priority;
 	Repeat repeat;
+	String rep_advanced; 
 	Status status;
 	int parent; // 0 if none
 	int shorter; 
+	int length; 
 	int longer;
 	TdDate before;
 	TdDate after; 
@@ -34,30 +36,34 @@ public class Todo {
 	int id; 
 	int start; 
 	int end;
-	private boolean hasEnd;
-	private boolean hasStart;
-	private boolean hasId;
-	private boolean hasStar;
-	private boolean hasComp;
-	private boolean hasCompafter;
-	private boolean hasCompbefore;
-	private boolean hasModbefore;
-	private boolean hasModafter;
-	private boolean hasStartafter;
-	private boolean hasStartbefore;
-	private boolean hasAfter;
-	private boolean hasBefore;
-	private boolean hasLonger;
-	private boolean hasShorter;
-	private boolean hasParent;
-	private boolean hasStatus;
-	private boolean hasRepeat;
-	private boolean hasPriority;
-	private boolean hasGoal;
-	private boolean hasContext;
-	private boolean hasFolder;
-	private boolean hasTag;
-	private boolean hasTitle;
+	String note; 
+	private boolean hasEnd = false;
+	private boolean hasStart = false;
+	private boolean hasId = false;
+	private boolean hasStar = false;
+	private boolean hasComp = false;
+	private boolean hasCompafter = false;
+	private boolean hasCompbefore = false;
+	private boolean hasModbefore = false;
+	private boolean hasModafter = false;
+	private boolean hasStartafter = false;
+	private boolean hasStartbefore = false;
+	private boolean hasAfter = false;
+	private boolean hasBefore = false;
+	private boolean hasLonger = false;
+	private boolean hasShorter = false;
+	private boolean hasParent = false;
+	private boolean hasStatus = false;
+	private boolean hasRepeat = false;
+	private boolean hasPriority = false;
+	private boolean hasGoal = false;
+	private boolean hasContext = false;
+	private boolean hasFolder = false;
+	private boolean hasTag = false;
+	private boolean hasTitle = false;
+	private boolean hasRepAdvanced = false;
+	private boolean hasLength = false; 
+	private boolean hasNote = false; 
 	
 	public Todo() {}
 
@@ -87,6 +93,39 @@ public class Todo {
 	 */
 	public String getTag() {
 		return tag;
+	}
+	
+	/**
+	 * Set the rep_advanced.
+	 */
+	public String getRepAdvanced() {
+		return this.rep_advanced;
+	}
+	
+	/**
+	 * Get the rep_advanced.
+	 */
+	public void setRepAdvanced(String repAdv) {
+		this.rep_advanced = repAdv; 
+		this.hasRepAdvanced = true;
+	}
+	
+	public void setNote(String note) {
+		this.note = note; 
+		this.hasNote = true;
+	}
+	
+	public String getNote() {
+		return this.note;
+	}
+	
+	public int getLength() {
+		return this.length;
+	}
+	
+	public void setLength(int length) {
+		this.length = length;
+		this.hasLength = true;
 	}
 	
 	/**
@@ -596,4 +635,15 @@ public class Todo {
 		return hasTitle;
 	} 
 	
+	public boolean hasRepAdvanced() {
+		return this.hasRepAdvanced;
+	}
+	
+	public boolean hasLength() {
+		return this.hasLength;
+	}
+	
+	public boolean hasNote() {
+		return this.hasNote;
+	}
 }

@@ -25,15 +25,13 @@ public class ModifyTodoRequest extends Request {
 		if (todo.hasParent()) buff.append(";parent=").append(todo.getParent());
 		if (todo.hasBefore()) buff.append(";before=").append(todo.getBefore());
 		if (todo.hasStartbefore()) buff.append(";startbefore=").append(todo.getStartbefore());
-		// TODO seems there's something missing if (todo.has)
 		if (todo.hasRepeat()) buff.append(";repeat=").append(todo.getRepeat());
-		// TODO repeat advances
+		if (todo.hasRepAdvanced()) buff.append(";rep_advanced=").append(todo.getRepAdvanced());
 		if (todo.hasStatus()) buff.append(";status=").append(todo.getStatus());
-		// TODO length in minutes
+		if (todo.hasLength()) buff.append(";length=").append(todo.getLength());
 		if (todo.hasPriority()) buff.append(";priority=").append(todo.getPriority());
 		if (todo.hasStar()) buff.append(";star=").append(todo.getStart());
-		// TODO add a note
-		
+		if (todo.hasNote()) buff.append(";note=").append(todo.hasNote());
 		this.url = this.url.concat(buff.toString());
 	}
 
