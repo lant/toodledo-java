@@ -8,7 +8,7 @@ public class GetUserIdRequest extends Request {
 
 	public GetUserIdRequest(String email, String password) throws ToodledoApiException {
 		super();
-		this.url = "http://api.toodledo.com/api.php?method=getUserId;email="+email+";pass="+password+";";
+		this.url = "http://api.toodledo.com/api.php?method=getUserid;email="+email+";pass="+password+";";
 	}
 
 	@Override
