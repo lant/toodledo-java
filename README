@@ -10,7 +10,7 @@ This is basically a library with a nice and helpfull (hopefully) API to work wit
 
 Libs
 ----
-I've not uploaded the jars. All the libraries a free to download. There's a readme.txt file into the libs folder with the names of the libraries and the links to download them.
+I'm using ivy for library dependency. If you don't know what it is or how to setup it have a look at http://ant.apache.org/ivy/history/latest-milestone/install.html . If for any reason you cannot install it you'll need to hack the build.xml and place the libs in the /lib directory.
 
 Thanks to
 ---------

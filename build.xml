@@ -1,4 +1,4 @@
-<project name="toodledo-java" basedir="." default="main">
+<project name="toodledo-java" basedir="." default="main" xmlns:ivy="antlib:org.apache.ivy.ant">
 
 <property name="src.dir"     value="src"/>
 <property name="build.dir"   value="build"/>
@@ -16,7 +16,11 @@
 	<delete dir="build"/>
 </target>
 
-<target name="compile">
+<target name="resolve" description="--> retreive dependencies with ivy">
+	<ivy:retrieve/>
+</target>    
+
+<target name="compile" depends="resolve">
 	<mkdir dir="${classes.dir}"/>
 	<javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
 </target>

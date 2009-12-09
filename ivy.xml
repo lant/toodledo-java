@@ -1,0 +1,7 @@
+<ivy-module version="2.0">
+    <info organisation="org.loststone" module="toodledo-java"/>
+    <dependencies>
+        <dependency org="commons-httpclient" name="commons-httpclient" rev="3.1"/>
+        <dependency org="joda-time" name="joda-time" rev="1.6"/>
+    </dependencies>
+</ivy-module>
