@@ -2,7 +2,7 @@ toodledo-java
 -------------
 
 This is an _UNOFFICIAL_ implementation of the www.toodledo.com REST API in Java.
-Coded by me (Marc) phlegias@gmail.com
+Coded by me (Marc) phlegias@gmail.com, and with various contributions from other people who helped via Github.
 
 Usage
 -----
@@ -11,3 +11,8 @@ This is basically a library with a nice and helpfull (hopefully) API to work wit
 Libs
 ----
 I've not uploaded the jars. All the libraries a free to download. There's a readme.txt file into the libs folder with the names of the libraries and the links to download them.
+
+Thanks to
+---------
+Brian de Alwis
+Gwyin Evans

@@ -24,17 +24,11 @@ Toodledo Java api documentation.
 </ul>
 <hr>
 <h2><a name="disclaimer">Disclaimer</a></h2>
-Hello all, this is an <b>UNOFFICIAL</b> implementation of the API from <a href="http://www.toodledo.com/info/api_doc.php">toodledo</a>.<p>
-Of course it's free software, bla bla bla bla bla bla. So, if you build a critical system using this api and then everything runs out of memory and you end up killing dozens of elders... it's not my problem.<p>
-Having said that...
+Hello all, this is an <b>UNOFFICIAL</b> implementation of the API from <a href="http://www.toodledo.com/info/api_doc.php">toodledo</a>.
 <h2><a name="versions">Versions</a></h2>
-<b>Release 0.1</b> Basic usage.
-<h3><a name="todo">Todo</a></h3>
-<ul>
-	<li> Refactoring in the Request and Response classes and subclasses.
-</ul>
+<b>Release 0.2</b> Basic usage.
 <h2><a name="intro">Intro</a></h2>
-Well yeah, I'm a toodledo user and i just wanted to use that for some of my stuff, i basically program in Java, and seems like the toodledo guys haven't got an official Java api (nasty people), so i had to make one. That's it.
+I'm a toodledo user and I just wanted to use that for some of my stuff, I basically program in Java, and seems like the toodledo guys haven't got an official Java api, so I made one. 
 <h2><a name="usage">Usage</a></h2>
 Pretty basic and pretty straightforward. 
 <p>
@@ -42,12 +36,7 @@ There's an interface with some "handy" methods, they should be enough for any ba
 <p>
 <code>org.loststone.toodledo.ToodledoApi</code>
 <p>
-and it has its implementation file in the same package: <code>org.loststone.toodledo.ToodledoApiImpl</code> it's also a good example of how to use the other methods in the library. Also, there's the javadoc in the doc/javadoc folder. <p>
-<b>Angry User: </b>Hey!!! the doc/javadoc dir is empty!!!!<br>
-<b>Me: </b> ant javadoc <br>
-<b>Angry (and now ashamed user): </b> Oh, yeah, sorry about that<br>
-<b>Me:</b> -_-'
-<p>
+and it has its implementation file in the same package: <code>org.loststone.toodledo.ToodledoApiImpl</code> it's also a good example of how to use the other methods in the library. Also, there's the javadoc in the doc/javadoc directory (ant javadoc)<p>
 If anyone needs anything that's not in the interface feel free to code it and add it to the library. Basically what all the methods do is create a Request, which inherits from the <code>org.loststone.toodledo.request.Request</code> class and then return a class than inherits from <code>org.loststone.toodledo.response.Response</code>, like this we encapsulate all the HTTP stuff, and the <code>Response</code> inherited class contains a <code>getResponseContent</code> that gives back the info from the call. If the response is easy you can parse the output there, but if the response is something bigger, like one of those xmls then you can use one class at the package <code>org.loststone.toodledo.xml</code> to parse it. Up to you.
 <p>
 Then, more advanced stuff:
@@ -72,6 +61,6 @@ You can contact me at: <p>
 	<li> irc (freenode): grind_lant
 </ul>
 <hr>
-<i>Last modified: </i> 20/3/2009
+<i>Last modified: </i> 9/12/2009
 </body>
 </html>
