@@ -40,9 +40,9 @@ public class GetUserIdParser extends DefaultHandler {
 			ie.printStackTrace();
 		}
 		
-		if (Integer.parseInt(userId) == 0) {
+		if (userId.equals("0")) {
 			throw new MissingPasswordException("Missing password");
-		} if (Integer.parseInt(userId) == 1) {
+		} else if (userId.equals("1")) {
 			throw new IncorrectUserPasswordException("Username or password incorrect, or user nonexistant");
 		}
 		return userId;
@@ -60,7 +60,7 @@ public class GetUserIdParser extends DefaultHandler {
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(qName.equalsIgnoreCase("userid")) {
-			userId = tempVal;
+			userId = tempVal.trim();
 		}
 	}
 
