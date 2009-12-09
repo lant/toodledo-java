@@ -1,6 +1,7 @@
 package org.loststone.toodledo.response;
 
 import org.loststone.toodledo.exception.ToodledoApiException;
+import org.loststone.toodledo.xml.ErrorParser;
 
 /**
  * This class holds a response from the server.
@@ -14,10 +15,8 @@ public abstract class Response {
 
 	public Response(String response) {
 		this.response = response;
-		if (response.contains("error")) 
-			this.succeed = false;
-		else
-			this.succeed = true;
+		ErrorParser errorParser = new ErrorParser(response);
+		this.succeed = errorParser.getError() == null;
 	}
 
 	public boolean succeeded() {

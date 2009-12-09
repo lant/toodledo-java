@@ -16,13 +16,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class ContextsParser extends DefaultHandler {
 
 	String xml; 
-	String tempVal; 
+	StringBuilder tempVal;
 	Context tmp_;
 	
 	ArrayList<Context> contextList; 
 	
 	public ContextsParser(String xml) {
-		tempVal = new String();
 		this.xml = xml;
 		contextList = new ArrayList<Context>();
 	}
@@ -50,7 +49,7 @@ public class ContextsParser extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
 	
-		tempVal = "";
+		tempVal = new StringBuilder();
 		
 		if(qName.equalsIgnoreCase("context")) {
 			tmp_ = new Context();
@@ -59,12 +58,12 @@ public class ContextsParser extends DefaultHandler {
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempVal = new String(ch,start,length);
+		tempVal.append(ch,start,length);
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(qName.equalsIgnoreCase("context")) {
-			tmp_.setName(tempVal);
+			tmp_.setName(tempVal.toString());
 			contextList.add(tmp_);
 		}
 	}

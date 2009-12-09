@@ -17,13 +17,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class GoalsParser extends DefaultHandler {
 
 	String xml; 
-	String tempVal; 
+	StringBuilder tempVal; 
 	Goal tmp_;
 	
 	ArrayList<Goal> goalsList; 
 	
 	public GoalsParser(String xml) {
-		tempVal = new String();
 		this.xml = xml;
 		goalsList = new ArrayList<Goal>();
 	}
@@ -51,7 +50,7 @@ public class GoalsParser extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
 	
-		tempVal = "";
+		tempVal = new StringBuilder();
 		
 		if(qName.equalsIgnoreCase("goal")) {
 			tmp_ = new Goal();
@@ -72,12 +71,12 @@ public class GoalsParser extends DefaultHandler {
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempVal = new String(ch,start,length);
+		tempVal.append(ch,start,length);
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(qName.equalsIgnoreCase("goal")) {
-			tmp_.setName(tempVal);
+			tmp_.setName(tempVal.toString());
 			goalsList.add(tmp_);
 		}
 	}

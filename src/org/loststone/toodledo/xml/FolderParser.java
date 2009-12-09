@@ -16,13 +16,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class FolderParser extends DefaultHandler {
 
 	String xml; 
-	String tempVal; 
+	StringBuilder tempVal; 
 	Folder tmp_;
 	
 	ArrayList<Folder> foldersList; 
 	
 	public FolderParser(String xml) {
-		tempVal = new String();
 		this.xml = xml;
 		foldersList = new ArrayList<Folder>();
 	}
@@ -50,7 +49,7 @@ public class FolderParser extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
 	
-		tempVal = "";
+		tempVal = new StringBuilder();
 		
 		if(qName.equalsIgnoreCase("folder")) {
 			tmp_ = new Folder();
@@ -71,12 +70,12 @@ public class FolderParser extends DefaultHandler {
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempVal = new String(ch,start,length);
+		tempVal.append(ch,start,length);
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(qName.equalsIgnoreCase("folder")) {
-			tmp_.setSName(tempVal);
+			tmp_.setSName(tempVal.toString());
 			foldersList.add(tmp_);
 		}
 	}

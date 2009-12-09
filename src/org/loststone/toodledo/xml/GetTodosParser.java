@@ -16,13 +16,12 @@ import org.xml.sax.helpers.DefaultHandler;
 public class GetTodosParser extends DefaultHandler {
 
 	String xml; 
-	String tempVal; 
+	StringBuilder tempVal; 
 	Todo tmp_;
 	
 	ArrayList<Todo> todoList; 
 	
 	public GetTodosParser(String xml) {
-		tempVal = new String();
 		this.xml = xml;
 		todoList = new ArrayList<Todo>();
 	}
@@ -50,7 +49,7 @@ public class GetTodosParser extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
 	
-		tempVal = "";
+		tempVal = new StringBuilder();
 		
 		if(qName.equalsIgnoreCase("task")) {
 			tmp_ = new Todo();
@@ -102,24 +101,24 @@ public class GetTodosParser extends DefaultHandler {
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempVal = new String(ch,start,length);
+		tempVal.append(ch,start,length);
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
 		if(qName.equalsIgnoreCase("task")) {
 			todoList.add(tmp_);
 		}else if(qName.equalsIgnoreCase("id")) {
-			tmp_.setId(Integer.parseInt(tempVal));
+			tmp_.setId(Integer.parseInt(tempVal.toString()));
 		}else if(qName.equalsIgnoreCase("parent")) {
-			tmp_.setParent(Integer.parseInt(tempVal));
+			tmp_.setParent(Integer.parseInt(tempVal.toString()));
 		}else if(qName.equalsIgnoreCase("children")) {
 			//TODO
 		}else if(qName.equalsIgnoreCase("title")) {
-			tmp_.setTitle(tempVal);
+			tmp_.setTitle(tempVal.toString());
 		}else if(qName.equalsIgnoreCase("tag")) {
-			tmp_.setTag(tempVal);
+			tmp_.setTag(tempVal.toString());
 		}else if(qName.equalsIgnoreCase("folder")) {
-			tmp_.setFolder(Integer.parseInt(tempVal));
+			tmp_.setFolder(Integer.parseInt(tempVal.toString()));
 		}else if(qName.equalsIgnoreCase("context")) {
 		}else if(qName.equalsIgnoreCase("goal")) {
 		}else if(qName.equalsIgnoreCase("added")) {

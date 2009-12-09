@@ -7,23 +7,27 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.loststone.toodledo.exception.IncorrectUserPasswordException;
-import org.loststone.toodledo.exception.MissingPasswordException;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-public class GetUserIdParser extends DefaultHandler {
+public class ErrorParser extends DefaultHandler {
 
 	String xml; 
-	StringBuilder tempVal; 
-	String userId = null; 
+	StringBuilder tempVal;
+	String error = null;
+	int depth = 0;
 	
-	public GetUserIdParser(String xml) {
+	public ErrorParser(String xml) {
 		this.xml = xml;
 	}
 	
-	public String getUserId() throws IncorrectUserPasswordException, MissingPasswordException{
+	/**
+	 * Parse the XML and return the Toodledo error text, if any.
+	 * Return null if there was no error.
+	 * @return the error or null if no error
+	 */
+	public String getError() {
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		try {
 			//get a new instance of parser
@@ -39,29 +43,26 @@ public class GetUserIdParser extends DefaultHandler {
 			ie.printStackTrace();
 		}
 		
-		if (userId.equals("0")) {
-			throw new MissingPasswordException("Missing password");
-		} else if (userId.equals("1")) {
-			throw new IncorrectUserPasswordException("Username or password incorrect, or user nonexistant");
-		}
-		return userId;
+		return error;
 	}
 	
 	//Event Handlers
 	public void startElement(String uri, String localName, String qName,
 		Attributes attributes) throws SAXException {
 		tempVal = new StringBuilder();
+		depth++;
 	}
 	
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		tempVal.append(ch,start,length);
+		tempVal.append(ch, start, length);
 	}
 	
 	public void endElement(String uri, String localName, String qName) throws SAXException {
-		if(qName.equalsIgnoreCase("userid")) {
-			userId = tempVal.toString().trim();
+		depth--;
+		if(qName.equalsIgnoreCase("error") && depth == 0) {
+			error = tempVal.toString().trim();
 		}
 	}
 
-	
+
 }
