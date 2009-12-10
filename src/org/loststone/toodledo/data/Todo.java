@@ -80,8 +80,8 @@ public class Todo {
 	 * @param title the title to set. If the title is longer than 255 charts it will be cropped.
 	 */
 	public void setTitle(String title) {
-		if (title.length() > 254)
-			this.title = title.substring(0,254);
+		if (title.length() > 255)
+			this.title = title.substring(0,255);
 		else
 			this.title = title;
 		
