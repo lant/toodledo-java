@@ -1,2 +1,3 @@
 0.2 - [20/01/2009] 
   * First version with changelog.txt
+  * Bugfix. Hadn't commited a change. 

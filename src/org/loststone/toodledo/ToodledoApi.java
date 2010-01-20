@@ -144,4 +144,14 @@ public interface ToodledoApi {
 	String getUserId(String eMail, String password) throws ToodledoApiException,
 		IncorrectUserPasswordException, MissingPasswordException;
 	
+	
+	/**
+	 * Removes a folder. 
+	 * @param auth Authorization token for that user.
+	 * @param folderId Folder id. 
+	 * @return true if it managed to delete. False otherwise.
+	 * @throws ToodledoApiException
+	 */
+	boolean deleteFolder(AuthToken auth, int folderId) throws ToodledoApiException;
+	
 }
