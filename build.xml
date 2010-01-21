@@ -40,15 +40,6 @@
 <target name="clean-build" depends="clean,jar"/>
 <target name="main" depends="clean,jar"/>
 
-<target name="run" depends="jar">
-  <java fork="false" classname="${main-class}">
-  <classpath>
-		<path refid="classpath"/>
-		<path location="${jar.dir}/${ant.project.name}.jar"/>
-  </classpath>
-  </java>
-</target>
-
 <target name="javadoc">
 <mkdir dir="${javadoc.dir}"/>
 
