@@ -76,13 +76,17 @@ public class ToodledoApiImpl implements ToodledoApi {
 		else
 			return null;
 	}
-
-	public AuthToken initialize(String username, String password) throws ToodledoApiException {
-		Request initReq = new AuthorizeRequest(username);
+	
+	public AuthToken initialize(String username, String password, String appid) throws ToodledoApiException {
+		Request initReq = new AuthorizeRequest(username,appid);
 		// response gives back the token, now create the AuthToken
 		AuthorizeResponse resp = (AuthorizeResponse) initReq.getResponse();
 		AuthToken token = new AuthToken(password, username, resp.getResponseContent());
 		return token;
+	}
+
+	public AuthToken initialize(String username, String password) throws ToodledoApiException {
+		return initialize(username,password,null);
 	}
 
 	public boolean modifyTodo(AuthToken auth, Todo newOne)  throws ToodledoApiException{

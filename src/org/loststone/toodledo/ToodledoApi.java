@@ -28,6 +28,17 @@ public interface ToodledoApi {
 	AuthToken initialize(String username, String password) throws ToodledoApiException;
 	
 	/**
+	 * This method authenticates a user and tells toodledo that's using a given application.
+	 * @param username Username of the user.
+	 * @param password Password of the user
+	 * @param appid The application ID 
+	 * @return Returns an AuthToken which is the object that holds the authorization key for that user
+	 * to use the web service. It expires after 4 hours.
+	 * @throws ToodledoApiException
+	 */
+	AuthToken initialize(String username, String password, String appid) throws ToodledoApiException;
+	
+	/**
 	 * Adds a Todo ( a task ) to toodledo.
 	 * @param auth Authorization token for that user
 	 * @param todo Todo object to add.

@@ -5,9 +5,13 @@ import org.loststone.toodledo.response.Response;
 
 public class AuthorizeRequest extends Request {
 
-	public AuthorizeRequest(String userId) {
+	public AuthorizeRequest(String userId, String appid) {
 		super();
 		this.url = "http://api.toodledo.com/api.php?method=getToken;userid="+userId;
+		if (appid != null) {
+			this.url.concat(";appid="+appid);
+		}
+			
 	}
 
 	@Override
