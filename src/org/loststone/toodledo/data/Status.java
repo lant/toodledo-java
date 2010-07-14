@@ -15,6 +15,7 @@ public enum Status {
     REFERENCE(10);
     
     private final int number; 
+    
     Status(int number) {
     	this.number = number;
     }
