@@ -24,13 +24,17 @@ public class Todo {
 	int length; 
 	int longer;
 	TdDate before;
-	TdDate after; 
+	TdDate after;
+	TdDate startDate; 
+	
 	TdDate startbefore; 
 	TdDate startafter;
 	TdDateTime modbefore;
 	TdDateTime modafter; 
+	TdDateTime modified; 
 	TdDate compbefore;
 	TdDate compafter; 
+	TdDate added; 
 	boolean notcomp;
 	boolean star; 
 	int id; 
@@ -64,10 +68,12 @@ public class Todo {
 	private boolean hasRepAdvanced = false;
 	private boolean hasLength = false; 
 	private boolean hasNote = false; 
+	private boolean hasAdded = false; 
+	private boolean hasModified = false; 
+	private boolean hasStartDate = false;
 	
 	public Todo() {}
 
-	
 	/**
 	 * @return the title
 	 */
@@ -256,6 +262,14 @@ public class Todo {
 		this.hasShorter = true; 
 	}
 
+	public void setModified(TdDateTime modified) {
+		this.hasModified = true;
+		this.modified = modified;
+	}
+	
+	public TdDateTime getModified() {
+		return this.modified;
+	}
 	/**
 	 * @return the longer
 	 */
@@ -323,6 +337,15 @@ public class Todo {
 		return startafter;
 	}
 	
+	public TdDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(TdDate startDate) {
+		this.hasStartDate = true;
+		this.startDate = startDate;
+	}
+
 	
 	/**
 	 * @param startafter the startafter to set
@@ -467,6 +490,15 @@ public class Todo {
 		this.hasEnd = true;
 	}
 
+	public void setAdded(TdDate added) {
+		this.added = added;
+		this.hasAdded = true;
+	}
+	
+	public TdDate getAdded() {
+		return this.added;
+	}
+	
 	/**
 	 * @return the hasEnd
 	 */
@@ -645,5 +677,17 @@ public class Todo {
 	
 	public boolean hasNote() {
 		return this.hasNote;
+	}
+	
+	public boolean hasAdded() {
+		return this.hasAdded;
+	}
+	
+	public boolean hasModified() {
+		return this.hasModified;
+	}
+	
+	public boolean hasStartDate() {
+		return this.hasStartDate;
 	}
 }

@@ -1,5 +1,8 @@
 package org.loststone.toodledo.data;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Status {
 
     NONE(0),
@@ -21,4 +24,18 @@ public enum Status {
     }
     
     public int getStatusAsInteger() {return this.number;}
+    
+    public static final Map<Integer, Status> ValueFromInt = new HashMap<Integer, Status>() {{
+    	put(0,NONE);
+    	put(1,NEXT_ACTION);
+    	put(2, ACTIVE);
+    	put(3, PLANNING);
+    	put(4, DELEGATED);
+    	put(5, WAITING);
+    	put(6, HOLD);
+    	put(7, POSTPONED);
+    	put(8, SOMEDAY);
+    	put(9, CANCELED);
+    	put(10, REFERENCE);
+    }};
 }

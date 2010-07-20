@@ -1,5 +1,8 @@
 package org.loststone.toodledo.xml;
 
+import org.junit.Ignore;
+import org.junit.Test;
+
 public class GetTodosParserTest {
 	private String firstXml = 
 		"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
@@ -61,6 +64,9 @@ public class GetTodosParserTest {
 		"	</task>" +
 		"	</tasks>" ;
 	
+	@Test
+	@Ignore
+	public void fakeTest() {}
 }
 
 

@@ -10,6 +10,10 @@ public class TdDateTime extends TdDate {
 		super();
 	}
 	
+	public TdDateTime(String dateTime) {
+		this.dt = new DateTime(dateTime);
+	}
+	
 	public TdDateTime(int year, int month, int day, int hour, int minute, int second) {
 		this.dt = new DateTime(year, month, day, hour, minute, second, 0);
 	}

@@ -12,6 +12,10 @@ public class TdDate {
 		dt = new DateTime();
 	}
 	
+	public TdDate(String date) {
+		dt = new DateTime(date);
+	}
+	
 	public TdDate(int year, int month, int day) {
 		dt = new DateTime(year, month, day, 0,0,0,0);
 	}

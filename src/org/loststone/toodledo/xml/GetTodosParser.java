@@ -9,8 +9,11 @@ import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
 import org.loststone.toodledo.data.Priority;
+import org.loststone.toodledo.data.Repeat;
 import org.loststone.toodledo.data.Status;
 import org.loststone.toodledo.data.Todo;
+import org.loststone.toodledo.util.TdDate;
+import org.loststone.toodledo.util.TdDateTime;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -75,70 +78,26 @@ public class GetTodosParser extends DefaultHandler {
 			tmp_.setId(Integer.parseInt(tempVal.toString()));
 		} else if (qName.equalsIgnoreCase("parent")) {
 			tmp_.setParent(Integer.parseInt(tempVal.toString()));
-		} else if (qName.equalsIgnoreCase("children")) {
-			// TODO
-		} else if (qName.equalsIgnoreCase("title")) {
+		}  else if (qName.equalsIgnoreCase("title")) {
 			tmp_.setTitle(tempVal.toString());
 		} else if (qName.equalsIgnoreCase("tag")) {
 			tmp_.setTag(tempVal.toString());
 		} else if (qName.equalsIgnoreCase("folder")) {
 			tmp_.setFolder(Integer.parseInt(tempVal.toString()));
-		} else if (qName.equalsIgnoreCase("context")) {
-		} else if (qName.equalsIgnoreCase("goal")) {
 		} else if (qName.equalsIgnoreCase("added")) {
-			// TODO
+			tmp_.setAdded(new TdDate(tempVal.toString()));
 		} else if (qName.equalsIgnoreCase("modified")) {
-			// TODO
+			tmp_.setModified(new TdDateTime(tempVal.toString()));
 		} else if (qName.equalsIgnoreCase("startdate")) {
-			// TODO
+			tmp_.setStartDate(new TdDate(tempVal.toString()));
 		} else if (qName.equalsIgnoreCase("duedate")) {
-			// TODO
-		} else if (qName.equalsIgnoreCase("duetime")) {
-			// TODO
-		} else if (qName.equalsIgnoreCase("completed")) {
-			// TODO
+			tmp_.setCompbefore(new TdDate(tempVal.toString()));
+		}  else if (qName.equalsIgnoreCase("completed")) {
+			tmp_.setCompbefore(new TdDate(tempVal.toString()));
 		} else if (qName.equalsIgnoreCase("repeat")) {
-			// TODO
-		} else if (qName.equalsIgnoreCase("rep_advanced")) {
-
-		} else if (qName.equalsIgnoreCase("status")) {
-			switch (Integer.parseInt(tempVal.toString())) {
-			case 0:
-				tmp_.setStatus(Status.NONE);
-				break;
-			case 1:
-				tmp_.setStatus(Status.NEXT_ACTION);
-				break;
-			case 2:
-				tmp_.setStatus(Status.ACTIVE);
-				break;
-			case 3:
-				tmp_.setStatus(Status.PLANNING);
-				break;
-			case 4:
-				tmp_.setStatus(Status.DELEGATED);
-				break;
-			case 5:
-				tmp_.setStatus(Status.WAITING);
-				break;
-			case 6:
-				tmp_.setStatus(Status.HOLD);
-				break;
-			case 7:
-				tmp_.setStatus(Status.POSTPONED);
-				break;
-			case 8:
-				tmp_.setStatus(Status.SOMEDAY);
-				break;
-			case 9:
-				tmp_.setStatus(Status.CANCELED);
-				break;
-			case 10:
-				tmp_.setStatus(Status.REFERENCE);
-				break;
-			default:
-				break;
-			}
+			tmp_.setRepeat(Repeat.ValueFromInt.get(Integer.parseInt(tempVal.toString())));
+		}  else if (qName.equalsIgnoreCase("status")) {
+			tmp_.setStatus(Status.ValueFromInt.get(Integer.parseInt(tempVal.toString())));
 		} else if (qName.equalsIgnoreCase("star")) {
 			int star = Integer.parseInt(tempVal.toString());
 			if (star == 0)
@@ -146,19 +105,10 @@ public class GetTodosParser extends DefaultHandler {
 			else 
 				tmp_.setStar(true);
 		} else if (qName.equalsIgnoreCase("priority")) {		
-			switch (Integer.parseInt(tempVal.toString())) {
-				case -1: tmp_.setPriority(Priority.NEGATIVE); break;
-				case 0: tmp_.setPriority(Priority.LOW); break;
-				case 1: tmp_.setPriority(Priority.MEDIUM); break;
-				case 2: tmp_.setPriority(Priority.HIGH); break;
-				case 3: tmp_.setPriority(Priority.TOP); break;
-				default: break; 
-			}
+			tmp_.setPriority(Priority.ValueFromInt.get(Integer.parseInt(tempVal.toString())));
 		} else if (qName.equalsIgnoreCase("length")) {
 			tmp_.setLength(Integer.parseInt(tempVal.toString()));
-		} else if (qName.equalsIgnoreCase("timer")) {
-			// TODO
-		} else if (qName.equalsIgnoreCase("note")) {
+		}  else if (qName.equalsIgnoreCase("note")) {
 			tmp_.setNote(tempVal.toString());
 		}
 	}
