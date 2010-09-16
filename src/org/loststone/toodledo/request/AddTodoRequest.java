@@ -25,7 +25,7 @@ public class AddTodoRequest extends Request {
 		if (todo.hasGoal()) buff.append(";goal=").append(todo.getGoal());
 		if (todo.hasParent()) buff.append(";parent=").append(todo.getParent());
 		if (todo.hasBefore()) buff.append(";before=").append(todo.getBefore());
-		if (todo.hasStartbefore()) buff.append(";startbefore=").append(todo.getStartbefore());
+		if (todo.hasStartbefore()) buff.append(";startbefore=").append(";star=1");
 		
 		// TODO missiing duetime and starttime
 		
